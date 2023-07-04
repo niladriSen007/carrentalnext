@@ -8,3 +8,8 @@ export interface CustomButtonProps{
 export interface FilterTitle{
     title:string,
 }
+
+export interface ManufacturerTypes{
+    manufacturer:string,
+    setManufacturer:( manufacturer:string)=>void
+}
