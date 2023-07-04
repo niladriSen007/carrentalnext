@@ -1,8 +1,20 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
+import SearchManufacturer from './SearchManufacturer';
 
 const SearchBar = () => {
+  const handleSearch =(e:React.FormEvent<HTMLFormElement>) =>{
+    e.preventDefault();
+  }
+
+  const [manufacturer,setManufacturer] = useState()
+
   return (
-    <div>SearchBar</div>
+    <form className='searchbar' onSubmit={handleSearch}>
+      <div className="searchbar__item">
+        <SearchManufacturer />
+      </div>
+    </form>
   )
 }
 
