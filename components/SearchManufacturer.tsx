@@ -40,18 +40,29 @@ const SearchManufacturer = ({
             displayValue={(manufacturer: string) => manufacturer}
             onChange={(e) => setQuery(e.target.value)}
           />
-              <Combobox.Options>
-                  {
-                    filteredManufacturers.length === 0 && query === ""
-                  }
-              </Combobox.Options>
           <Transition
             as={React.Fragment}
             leave="transition ease-in duration-100"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
             afterLeave={() => setQuery("")}
-          ></Transition>
+            >
+            <Combobox.Options>
+                {
+                  filteredManufacturers.length === 0 && query !== "" ? (
+                    <Combobox.Option value={query} className={"search-manufacturer__option"}>
+                        Create {query}
+                    </Combobox.Option>
+                  ) : (
+                    filteredManufacturers.map(item=>(
+                      <Combobox.Option key={item} value={item} className={({active})=>` relative search-manufacturer__option ${active ? "bg-primary-blue text-white" : "text-gray-900"}`}>
+                        {item}
+                    </Combobox.Option>
+                    ))
+                  )
+                }
+            </Combobox.Options>
+            </Transition>
         </div>
       </Combobox>
     </div>
