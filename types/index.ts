@@ -13,3 +13,8 @@ export interface ManufacturerTypes{
     manufacturer:string,
     setManufacturer:( manufacturer:string)=>void
 }
+
+export interface Customer{
+    name:string,
+    id:number
+}
